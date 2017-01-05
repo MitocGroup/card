@@ -22,7 +22,7 @@ export default {
   
   activated () {
     if (this.$card) {
-      this.$card.handleInitialPlaceholders()
+      this.$card.handleInitialValues()
     }
   },
   

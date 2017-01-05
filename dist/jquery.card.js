@@ -174,7 +174,7 @@ var card =
 	    toInitialize.setAttribute(this.initializedDataAttr, true);
 	    this.render();
 	    this.attachHandlers();
-	    this.handleInitialPlaceholders();
+	    this.handleInitialValues();
 	  }
 
 	  Card.prototype.render = function() {
@@ -258,23 +258,24 @@ var card =
 	    });
 	  };
 
-	  Card.prototype.handleInitialPlaceholders = function() {
-	    var el, name, ref, results, selector;
+	  Card.prototype.handleInitialValues = function() {
+	    var el, elem, j, len, name, ref, selector;
 	    ref = this.options.formSelectors;
-	    results = [];
 	    for (name in ref) {
 	      selector = ref[name];
 	      el = this["$" + name];
-	      if (QJ.val(el)) {
-	        QJ.trigger(el, 'paste');
-	        results.push(setTimeout(function() {
-	          return QJ.trigger(el, 'keyup');
-	        }));
-	      } else {
-	        results.push(void 0);
+	      for (j = 0, len = el.length; j < len; j++) {
+	        elem = el[j];
+	        if (QJ.val(elem)) {
+	          (function(elem) {
+	            QJ.trigger(elem, 'paste');
+	            return setTimeout(function() {
+	              return QJ.trigger(elem, 'keyup');
+	            });
+	          })(elem);
+	        }
 	      }
 	    }
-	    return results;
 	  };
 
 	  Card.prototype.handle = function(fn) {
