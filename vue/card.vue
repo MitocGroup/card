@@ -20,6 +20,12 @@ export default {
     }
   },
   
+  activated () {
+    if (this.$card) {
+      this.$card.handleInitialPlaceholders()
+    }
+  },
+  
   mounted () {
     this.$nextTick(() => {
       this.options.container = this.options.container || '.jp-card-preview'

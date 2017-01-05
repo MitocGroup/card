@@ -395,7 +395,7 @@ var card =
 	    QJ.on(el, 'blur', function() {
 	      return QJ.removeClass(out, 'jp-card-focused');
 	    });
-	    QJ.on(el, 'keyup change paste', function(e) {
+	    QJ.on(el, 'keyup change paste input', function(e) {
 	      var elem, filter, i, j, join, k, len, len1, outEl, outVal, ref, results, val;
 	      val = (function() {
 	        var j, len, results;

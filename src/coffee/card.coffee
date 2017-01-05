@@ -252,7 +252,7 @@ class Card
     QJ.on el, 'blur', ->
       QJ.removeClass out, 'jp-card-focused'
 
-    QJ.on el, 'keyup change paste', (e) ->
+    QJ.on el, 'keyup change paste input', (e) ->
       val = (QJ.val(elem) for elem in el)
 
       join = opts.join(val)
