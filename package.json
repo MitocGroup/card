@@ -19,11 +19,11 @@
     }
   ],
   "scripts": {
-    "clean": "rimraf ./lib/ && rimraf ./dist/",
+    "clean": "node_modules/.bin/rimraf ./lib/ && node_modules/.bin/rimraf ./dist/",
     "compile": "npm run clean && npm run compile:lib && npm run compile:dist",
-    "compile:lib": "coffee --compile -o ./lib/ ./src/coffee/card.coffee && node-sass ./src/scss/card.scss -o lib/ && replace '../scss/card.scss' './card.css' lib/card.js",
+    "compile:lib": "node_modules/.bin/coffee --compile -o ./lib/ ./src/coffee/card.coffee && node_modules/.bin/node-sass ./src/scss/card.scss -o lib/ && node_modules/.bin/replace '../scss/card.scss' './card.css' lib/card.js",
     "compile:dist": "npm run env NODE_ENV=production && webpack",
-    "development": "webpack-dev-server --hot --inline",
+    "development": "node_modules/.bin/webpack-dev-server --hot --inline",
     "preversion": "npm run compile",
     "prepublish": "npm run env NODE_ENV=production && npm run compile",
     "postpublish": "git push origin master && git push --tags",
@@ -52,6 +52,7 @@
   "dependencies": {
     "node.extend": "~1.1.3",
     "qj": "^2.0.0",
-    "payment": "^2.1.4"
+    "payment": "^2.1.4",
+    "bourbon": "^4.2.7"
   }
 }
